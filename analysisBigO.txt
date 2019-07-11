@@ -1,0 +1,80 @@
+1 . Problem_1 LRU Cache:
+
+As per the exercise requirement, every operation in this exercise takes time complexity of O(1). Set function uses
+dictionary to store node references. Node's head and tail keeps track of first and last items in the list making it
+easy to access oldest and newest nodes with the time complexity of O(1). In "set" function, dictionary's pop method is
+O(1) and in "get" function searching for a key is also O(1) (according to https://wiki.python.org/moin/TimeComplexity)
+In conclusion, when it comes to time complexity the operations in this exercise do not depend on the input size
+On the other hand, when it comes to space  complexity the exercise is using dictionary and space depends on the input
+size. As we add more items to the dictionary it must allocate more space for the items
+
+2. Problem_2 File search
+
+To solve this problem, the best approach would be to use recursion. It simplifies the code and accomplishes task
+efficiently. Function "find_files" has a loop which depends on
+array size and those elements in array might have a lists that needs to be traversed but each element is touched only
+once making the time complexity O(n). This is also referenced in
+https://stackoverflow.com/questions/52752666/time-complexity-for-recrusive-deep-flatten.
+Another loop is in function "check_every_file" is a recursive where function also calls itself touching every element
+once too which makes it O(n). In conclusion, to find a file that ends with ".c", it would take O(n) + O(n) = O(2n)
+for time complexity however, simplification of this run time analysis would be O(n)
+When it comes to space complexity, the exercise uses three lists making it O(3n) for space complexity
+
+3. Problem_3 Huffman Code:
+
+Function "appendtoCount" loops through data touching every element once which evaluates time complexity to O(n) but
+adding to a set is O(1) because sets are implemented using hash tables (https://stackoverflow.com/questions/7351459/
+time-complexity-of-python-set-operations). I used lists for this because it simplifies code and makes it easy to append.
+
+Function "appendToNode" loops twice. First loop goes into self.countList (which is array of tuples) takes O(n) time
+and inside this loop it calls another (inner) loop function to find an index which is also O(n)and then inserts a node into a
+list of sorted nodes(sortedNodes) which also takes O(n). The reason why I implemented the function in this way was
+because I thought this would be the most efficient way to insert the node in a sorted list and maintain it sorted
+In this functions there are outer and inner loops which are O(n^2) adding to it node insertion O(n) would make this function O(n^2 + n).
+
+Function "createNodesTree", has a while loop touching every element once which is O(n) but is also has two inner loops:
+one for finding index to append node (which is O(n)) and the second to append the node at the index (which is O(n)).
+Altogether, this takes O(n) * (O(n) + O(n)) = O(n) * O(2n) = O(2n^2). The simplification of this run time analysis
+would be O(n^2)
+Function "createpath" calls a recursive function which calls itself to traverse both left and right children. Because
+each child in the tree will be touched once, the operation takes O(n) (https://stackoverflow.com/questions/4547012/
+complexities-of-binary-tree-traversals).
+Functions getBinaryData and fromBinaryToStr converts string to binary data and binary data to string. Each function,
+has a one loop touching an element only once which makes time complexity O(n) for each function. The loops were used
+because they were the most appropriate for the successful completion of this exercise
+
+When talking about space complexity for this exercise, there are around nine lists created and a hash tables. All of
+them are dependent on the input size. Thus, the space complexity is somewhere around O(9n)
+In conclusion, the data structure used
+
+4. Problem_4 Active Directory
+
+"Group" class have append (to list) in two functions "add_group" and "add_user". These operations take time
+complexity of O(n) each (according to https://wiki.python.org/moin/TimeComplexity)
+Another function "is_user_in_group", is a recursive function which loops through list and list of these lists. Since
+every item is visited only once, the time complexity for this operation is O(n). Thus, simplification of this exercise's
+run time analysis would be O(n).
+Space complexity is O(2n) because of the two lists being used to append groups and users.
+The reason for using a recursion for this exercise was because it is the most efficient
+way to solve this problem with least code being used, space and time
+
+5. Problem_5 Blockchain
+
+The function to add block "add_block" take O(1), however function "print_block_chain" goes through every block and
+visits it once which makes it O(n) because it is dependent on input size. The simplification of this exercise's run
+time analysis would be O(n). I believe that space complexity for the exercise is O(n) because it is dependent on number
+of blocks being added. Because every block is connected with the previous, the best data structure to represent and
+solve this problem would be linked lists
+
+6. Problem_6 Union and intersection
+
+Function "check_for_duplicates" and "check_for_intersecting" each have one loop with linear time, every node is visited
+once which makes it another O(2n).
+Function "union" have two loops each one with linear time so the complexity for this
+function is O(2n). Function "intersection" have 3 loops, each are visiting element once making time complexity to be
+O(3n) for this function. The space complexity is O(4n) because there are four linked lists created.
+The simplification of this exercise's run time analysis would be O(n). In my functions, I used
+lots of iterations which in this case are costly in both space and time but on the other hand, they are playing an
+important part filtering for duplicates.
+
+
